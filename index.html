@@ -1,0 +1,97 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Application</title>
+    <link rel="stylesheet" href="style.css" type="text/css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+    <script src="https://npmcdn.com/vue-router/dist/vue-router.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>   
+</head>
+<body>
+
+  <div id="app">
+
+    <header id="main">
+      <nav class="nav" v-bind:class="active" v-on:click.prevent>
+        <a href="#0" class="nav__item">home</a>
+        <a href="#0" class="nav__item">Test page</a>
+        <a href="#0" class="nav__item">Test page</a>
+        <a href="#0" class="nav__item">Test page</a>
+      </nav>
+    </header>
+
+    <div class="login-page">
+       <transition name="fade">
+          <div v-if="!registerActive" class="wallpaper-login"></div>
+       </transition>
+       <div class="wallpaper-register">
+         <div class="layer">
+         </div>
+        </div>
+ 
+       <div class="container">
+          <div class="row">
+             <div class="col-lg-4 col-md-6 col-sm-8 mx-auto">
+                <div v-if="!registerActive" class="card login" v-bind:class="{ error: emptyFields }">
+                   <h1>Sign In</h1>
+                   <form class="form-group">
+                      <input v-model="emailLogin" type="email" class="form-control" placeholder="Email" required>
+                      <input v-model="passwordLogin" type="password" class="form-control" placeholder="Password" required>
+                      <input type="submit" class="btn btn-primary" @click="doLogin">
+                      <p>Don't have an account? <a href="#" @click="registerActive = !registerActive, emptyFields = false">Sign up here</a>
+                      </p>
+                      <p><a href="#">Forgot your password?</a></p>
+                   </form>
+                </div>
+ 
+                <div v-else class="card register" v-bind:class="{ error: emptyFields }">
+                   <h1>Sign Up</h1>
+                   <form class="form-group">
+                      <input v-model="emailReg" type="email" class="form-control" placeholder="Email" required>
+                      <input v-model="passwordReg" type="password" class="form-control" placeholder="Password" required>
+                      <input v-model="confirmReg" type="password" class="form-control" placeholder="Confirm Password" required>
+                      <input type="submit" class="btn btn-primary" @click="doRegister">
+                      <p>Already have an account? <a href="#" @click="registerActive = !registerActive, emptyFields = false">Sign in here</a>
+                      </p>
+                   </form>
+                </div>
+             </div>
+          </div>
+ 
+       </div>
+    </div>
+ 
+ </div>
+ <!--
+<div class="container">
+  <header class="header">
+    <h3 class="header-logo">Shopping</h3>
+    
+    <nav class="header-nav">
+      <ul>
+        <li><a href="#0">Home</a></li>
+        <li><a href="#0">Products</a></li>
+        <li><a href="#0">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+  
+  <div id="app">
+    <p>
+      <router-link v-if="!loggedIn"  to="/login">Login</router-link>
+      <router-link v-if="loggedIn"  to="/logout">Logout</router-link>
+      <router-link to="/about">About</router-link>
+      <router-link to="/dashboard">Dashboard</router-link>
+    </p>
+    <router-view v-bind:logged-in="loggedIn"></router-view>
+  </div>
+  
+</div>- container -->
+<script src="main.js"></script>
+</body>
+<script src="https://unpkg.com/vue"></script>
+
+</html>
